@@ -34,10 +34,10 @@ namespace Math
 
     double sqrt(double a)
     {
-        double error = 0.00001; //define the precision of your result
+        double error = 0.00001;
         double s = a;
 
-        while ((s - a / s) > error) //loop until precision satisfied 
+        while ((s - a / s) > error)
         {
             s = (s + a / s) / 2;
         }
