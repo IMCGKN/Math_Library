@@ -123,7 +123,7 @@ namespace Math
             this->z *= this->z;
         }
 
-        Vec3 operator=(const Vec3& a)
+        Vec3& operator=(const Vec3& a)
         {
             this->x = a.x;
             this->y = a.y;
@@ -131,80 +131,146 @@ namespace Math
             return *this;
         }
 
-        Vec3 operator=(float a)
+        Vec3& operator=(float a)
         {
             this->x = a;
             this->y = a;
             this->z = a;
             return *this;
         }
-
-        Vec3 operator+(const Vec3& a)
+        
+        Vec3& operator+(const Vec3& a)
         {
-            Vec3 temp;
+            static Vec3 temp;
             temp.x = this->x + a.x;
             temp.y = this->y + a.y;
             temp.z = this->z + a.z;
             return temp;
         }
-
-        Vec3 operator+(float a)
+        
+        Vec3& operator+=(const Vec3& a)
         {
-            Vec3 temp;
+            this->x += a.x;
+            this->y += a.y;
+            this->z += a.z;
+            return *this;
+        }
+        
+        Vec3& operator+=(float a)
+        {
+            this->x += a;
+            this->y += a;
+            this->z += a;
+            return *this;
+        }
+
+        Vec3& operator+(float a)
+        {
+            static Vec3 temp;
             temp.x = this->x + a;
             temp.y = this->y + a;
             temp.z = this->z + a;
             return temp;
         }
 
-        Vec3 operator-(const Vec3& a)
+        Vec3& operator-(const Vec3& a)
         {
-            Vec3 temp;
+            static Vec3 temp;
             temp.x = this->x - a.x;
             temp.y = this->y - a.y;
             temp.z = this->z - a.z;
             return temp;
         }
-
-        Vec3 operator-(int a)
+        
+        Vec3& operator==(const Vec3& a)
         {
-            Vec3 temp;
+            this->x -= a.x;
+            this->y -= a.y;
+            this->z -= a.z;
+            return *this;
+        }
+        
+        Vec3& operator-=(float a)
+        {
+            this->x -= a;
+            this->y -= a;
+            this->z -= a;
+            return *this;
+        }
+
+        Vec3& operator-(int a)
+        {
+            static Vec3 temp;
             temp.x = this->x - a;
             temp.y = this->y - a;
             temp.z = this->z - a;
             return temp;
         }
 
-        Vec3 operator*(const Vec3& a)
+        Vec3& operator*(const Vec3& a)
         {
-            Vec3 temp;
+            static Vec3 temp;
             temp.x = this->x * a.x;
             temp.y = this->y * a.y;
             temp.z = this->z * a.z;
             return temp;
         }
-
-        Vec3 operator*(float a)
+        
+        Vec3& operator*=(const Vec3& a)
         {
-            Vec3 temp;
+            this->x *= a.x;
+            this->y *= a.y;
+            this->z *= a.z;
+            return *this;
+        }
+        
+        Vec3& operator*=(float a)
+        {
+            this->x *= a;
+            this->y *= a;
+            this->z *= a;
+            return *this;
+        }
+
+        Vec3& operator*(float a)
+        {
+            static Vec3 temp;
             temp.x = this->x * a;
             temp.y = this->y * a;
             temp.z = this->z * a;
             return temp;
         }
 
-        Vec3 operator/(const Vec3& a)
+        Vec3& operator/(const Vec3& a)
         {
-            Vec3 temp;
+            static Vec3 temp;
             temp.x = this->x / a.x;
             temp.y = this->y / a.y;
             temp.z = this->z / a.z;
             return temp;
         }
-
-        Vec3 operator/(float a)
+        
+        Vec3& operator/=(const Vec3& a)
         {
-            Vec3 temp;
+            this->x /= a.x;
+            this->y /= a.y;
+            this->z /= a.z;
+            return *this;
+        }
+        
+        Vec3& operator/=(float a)
+        {
+            if(a == 0)
+            	a = 1;
+            this->x /= a;
+            this->y /= a;
+            this->z /= a;
+            return *this;
+        }
+
+        Vec3& operator/(float a)
+        {
+            static Vec3 temp;
             temp.x = this->x / a;
             temp.y = this->y / a;
             temp.z = this->z / a;
@@ -230,80 +296,137 @@ namespace Math
             this->y *= this->y;
         }
 
-        Vec2 operator=(const Vec2& a)
+        Vec2& operator=(const Vec2& a)
         {
             this->x = a.x;
             this->y = a.y;
             return *this;
         }
 
-        Vec2 operator=(float a)
+        Vec2& operator=(float a)
         {
             this->x = a;
             this->y = a;
             return *this;
         }
 
-        Vec2 operator-(const Vec2& a)
+        Vec2& operator-(const Vec2& a)
         {
-            Vec2 temp;
+            static Vec2 temp;
             temp.x = this->x - a.x;
             temp.y = this->y - a.y;
             return temp;
         }
-
-        Vec2 operator-(float a)
+        
+        Vec2& operator-=(const Vec2& a)
         {
-            Vec2 temp;
+            this->x -= a.x;
+            this->y -= a.y;
+            return *this;
+        }
+        
+        Vec2& operator-=(float a)
+        {
+            this->x -= a;
+            this->y -= a;
+            return *this;
+        }
+
+        Vec2& operator-(float a)
+        {
+            static Vec2 temp;
             temp.x = this->x - a;
             temp.y = this->y - a;
             return temp;
         }
 
-        Vec2 operator+(const Vec2& a)
+        Vec2& operator+(const Vec2& a)
         {
-            Vec2 temp;
+            static Vec2 temp;
             temp.x = this->x + a.x;
             temp.y = this->y + a.y;
             return temp;
         }
-
-        Vec2 operator+(float a)
+        
+        Vec2& operator+=(const Vec2& a)
         {
-            Vec2 temp;
+            this->x += a.x;
+            this->y += a.y;
+            return *this;
+        }
+        
+        Vec2& operator+=(float a)
+        {
+            this->x += a;
+            this->y += a;
+            return *this;
+        }
+
+        Vec2& operator+(float a)
+        {
+            static Vec2 temp;
             temp.x = this->x + a;
             temp.y = this->y + a;
             return temp;
         }
 
-        Vec2 operator*(const Vec2& a)
+        Vec2& operator*(const Vec2& a)
         {
-            Vec2 temp;
+            static Vec2 temp;
             temp.x = this->x * a.x;
             temp.y = this->y * a.y;
             return temp;
         }
-
-
-        Vec2 operator*(float a)
+        
+       	Vec2& operator*=(const Vec2& a)
         {
-            Vec2 temp;
+            this->x *= a.x;
+            this->y *= a.y;
+            return *this;
+        }
+        
+        Vec2& operator*=(float a)
+        {
+            this->x *= a;
+            this->y *= a;
+            return *this;
+        }
+
+        Vec2& operator*(float a)
+        {
+            static Vec2 temp;
             temp.y = this->y * a;
             temp.x = this->x * a;
             return temp;
         }
 
-        Vec2 operator/(const Vec2& a)
+        Vec2& operator/(const Vec2& a)
         {
-            Vec2 temp;
+            static Vec2 temp;
             temp.x = this->x / a.x;
             temp.y = this->y / a.y;
             return temp;
         }
-
-        Vec2 operator/(float a)
+        
+        Vec2& operator/=(const Vec2& a)
         {
-            Vec2 temp;
+            this->x /= a.x;
+            this->y /= a.y;
+            return *this;
+        }
+        
+        Vec2& operator/=(float a)
+        {
+            if(a == 0)
+            	a = 1;
+            this->x /= a;
+            this->y /= a;
+            return *this;
+        }
+
+        Vec2& operator/(float a)
+        {
+            static Vec2 temp;
             temp.x = this->x / a;
             temp.y = this->y / a;
             return temp;
@@ -321,7 +444,7 @@ namespace Math
     public:
         float mat[4][4];
 
-        Matrix4x4 operator=(Matrix4x4 a)
+        Matrix4x4& operator=(Matrix4x4& a)
         {
             for(int i = 0; i < 4; i++)
             {
@@ -333,7 +456,7 @@ namespace Math
             return *this;
         }
 
-        Matrix4x4 operator=(float a)
+        Matrix4x4& operator=(float a)
         {
             for(int i = 0; i < 4; i++)
             {
@@ -344,10 +467,22 @@ namespace Math
             }
             return *this;
         }
-
-        Matrix4x4 operator+(Matrix4x4 a)
+        
+        Matrix4x4& operator+=(Matrix4x4& a)
         {
-            Matrix4x4 temp;
+            for(int i = 0; i < 4; i++)
+            {
+                for(int j = 0; j < 4; j++)
+                {
+                    this->mat[i][j] += a.mat[i][j];
+                }
+            }
+            return *this;
+        }
+
+        Matrix4x4& operator+(Matrix4x4& a)
+        {
+            static Matrix4x4 temp;
             for(int i = 0; i < 4; i++)
             {
                 for(int j = 0; j < 4; j++)
@@ -358,9 +493,9 @@ namespace Math
             return temp;
         }
 
-        Matrix4x4 operator+(float a)
+        Matrix4x4& operator+(float a)
         {
-            Matrix4x4 temp;
+            static Matrix4x4 temp;
             for(int i = 0; i < 4; i++)
             {
                 for(int j = 0; j < 4; j++)
@@ -371,9 +506,9 @@ namespace Math
             return temp;
         }
 
-        Matrix4x4 operator-(Matrix4x4 a)
+        Matrix4x4& operator-(Matrix4x4& a)
         {
-            Matrix4x4 temp;
+            static Matrix4x4 temp;
             for(int i = 0; i < 4; i++)
             {
                 for(int j = 0; j < 4; j++)
@@ -383,10 +518,22 @@ namespace Math
             }
             return temp;
         }
-
-        Matrix4x4 operator-(float a)
+        
+        Matrix4x4& operator-=(Matrix4x4& a)
         {
-            Matrix4x4 temp;
+            for(int i = 0; i < 4; i++)
+            {
+                for(int j = 0; j < 4; j++)
+                {
+                    this->mat[i][j] -= a.mat[i][j];
+                }
+            }
+            return *this;
+        }
+
+        Matrix4x4& operator-(float a)
+        {
+            static Matrix4x4 temp;
             for(int i = 0; i < 4; i++)
             {
                 for(int j = 0; j < 4; j++)
@@ -396,10 +543,22 @@ namespace Math
             }
             return temp;
         }
-
-        Matrix4x4 operator*(Matrix4x4 a)
+        
+        Matrix4x4& operator-=(float a)
         {
-            Matrix4x4 temp;
+            for(int i = 0; i < 4; i++)
+            {
+                for(int j = 0; j < 4; j++)
+                {
+                    this->mat[i][j] -= a;
+                }
+            }
+            return *this;
+        }
+
+        Matrix4x4& operator*(Matrix4x4& a)
+        {
+            static Matrix4x4 temp;
             for(int i = 0; i < 4; i++)
             {
                 for(int j = 0; j < 4; j++)
@@ -409,10 +568,34 @@ namespace Math
             }
             return temp;
         }
-
-        Matrix4x4 operator*(float a)
+        
+        Matrix4x4& operator*=(Matrix4x4& a)
         {
-            Matrix4x4 temp;
+            for(int i = 0; i < 4; i++)
+            {
+                for(int j = 0; j < 4; j++)
+                {
+                    this->mat[i][j] *= a.mat[i][j];
+                }
+            }
+            return *this;
+        }
+        
+        Matrix4x4& operator*=(float a)
+        {
+            for(int i = 0; i < 4; i++)
+            {
+                for(int j = 0; j < 4; j++)
+                {
+                    this->mat[i][j] *= a;
+                }
+            }
+            return *this;
+        }
+
+        Matrix4x4& operator*(float a)
+        {
+            static Matrix4x4 temp;
             for(int i = 0; i < 4; i++)
             {
                 for(int j = 0; j < 4; j++)
@@ -423,33 +606,59 @@ namespace Math
             return temp;
         }
 
-        Matrix4x4 operator/(Matrix4x4 a)
+        Matrix4x4& operator/(Matrix4x4& a)
         {
-            Matrix4x4 temp;
+            static Matrix4x4 temp;
             for(int i = 0; i < 4; i++)
             {
                 for(int j = 0; j < 4; j++)
                 {
                     if(a.mat[i][j] == 0)
                         a.mat[i][j] = 1;
-                    temp.mat[i][j] = this->mat[i][j] / a.mat[i][j];
+                    temp = this->mat[i][j] / a.mat[i][j];
                 }
             }
             return temp;
         }
-
-        Matrix4x4 operator/(float a)
+        
+        Matrix4x4& operator/=(Matrix4x4& a)
         {
-            Matrix4x4 temp;
             for(int i = 0; i < 4; i++)
             {
                 for(int j = 0; j < 4; j++)
                 {
-                    temp.mat[i][j] = this->mat[i][j] / a;
+                    if(a.mat[i][j] == 0)
+                        a.mat[i][j] = 1;
+                    this->mat[i][j] /= a.mat[i][j];
                 }
             }
-            return temp;
+            return *this;
+        }
+        
+        Matrix4x4& operator/=(float a)
+        {
+            for(int i = 0; i < 4; i++)
+            {
+                for(int j = 0; j < 4; j++)
+                {
+                    if(a == 0)
+                        a = 1;
+                    this->mat[i][j] /= a;
+                }
+            }
+            return *this;
+        }
+
+        Matrix4x4& operator/(float a)
+        {
+            for(int i = 0; i < 4; i++)
+            {
+                for(int j = 0; j < 4; j++)
+                {
+                    this->mat[i][j] /= a;
+                }
+            }
+            return *this;
         }
     };
 };
-
