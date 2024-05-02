@@ -76,7 +76,7 @@ You can use this class to add, devide, multiply and subtract two vectors.
 
 You can also assign values of one vector to the other.
 
-MATRIX4v4:
+MATRIX4x4:
 
 is a class used to demonstrate 4x4 MATRIX.
 
